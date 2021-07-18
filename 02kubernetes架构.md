@@ -2,7 +2,8 @@
 
 ### 结构图如下
 
-![image-20210718201846470](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210718201846470.png)
+![image](https://user-images.githubusercontent.com/12670758/126067494-ec6df3ee-861e-4616-bc50-37bc79d79f7f.png)
+
 
 ### master节点
 
