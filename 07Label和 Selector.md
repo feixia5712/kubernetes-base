@@ -44,7 +44,7 @@ selector:
     - {key: tier, operator: In, values: [cache]}
     - {key: environment, operator: NotIn, values: [dev]}
 ```
-matchExpressions 是 Pod 选择算符需求的列表。 有效的运算符包括 In、NotIn、Exists 和 DoesNotExist。 在 In 和 NotIn 的情况下，设置的值必须是非空的。 Exists 和 DoesNotExist保证key必须存在，来自 matchLabels 和 matchExpressions 的所有要求都按逻辑与的关系组合到一起 -- 它们必须都满足才能匹配
+matchExpressions 是 Pod 选择算符需求的列表。 有效的运算符包括 In、NotIn、Exists 和 DoesNotExist。 在 In 和 NotIn 的情况下，设置的值必须是非空的。 Exists 和 DoesNotExist 只是把用来判断key的，来自 matchLabels 和 matchExpressions 的所有要求都按逻辑与的关系组合到一起 -- 它们必须都满足才能匹配
 
 ```
 [root@k8s-master01 yaml]# kubectl get pod --show-labels
