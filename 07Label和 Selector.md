@@ -35,6 +35,17 @@ Selector主要用于资源的匹配，只有符合条件的资源才会被调用
 
 *基于集合* 的标签需求允许你通过一组值来过滤键。 支持三种操作符：`in`、`notin` 和 `exists` (只可以用在键标识符上)
 
+支持多组匹配
+```
+selector:
+  matchLabels:
+    component: redis
+  matchExpressions:
+    - {key: tier, operator: In, values: [cache]}
+    - {key: environment, operator: NotIn, values: [dev]}
+```
+matchExpressions 是 Pod 选择算符需求的列表。 有效的运算符包括 In、NotIn、Exists 和 DoesNotExist。 在 In 和 NotIn 的情况下，设置的值必须是非空的。 Exists 和 DoesNotExist保证key必须存在，来自 matchLabels 和 matchExpressions 的所有要求都按逻辑与的关系组合到一起 -- 它们必须都满足才能匹配
+
 ```
 [root@k8s-master01 yaml]# kubectl get pod --show-labels
 NAME          READY   STATUS    RESTARTS   AGE   LABELS
