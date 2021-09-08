@@ -226,4 +226,15 @@ ConfigMap和Secret必须要和Pod或者是引用它资源在同一个命名空�
 subPath也是无法热更新的
 ConfigMap和Secret最好不要太大
 ```
+### v1.19之后新增不可变ConfigMap/Secret
 
+```
+新增了一个参数immutable: true 加上这个参数后，保证文件不能被修改
+apiVersion: v1
+kind: Secret
+metadata:
+  ...
+data:
+  ...
+immutable: true
+```
