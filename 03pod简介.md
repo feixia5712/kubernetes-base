@@ -159,6 +159,7 @@ periodSeconds: 5   # 检测间隔
 successThreshold: 1 # 检查成功为1次表示就绪
 failureThreshold: 2 # 检测失败2次表示未就绪
 ```
+具体使用案例参考;https://www.cnblogs.com/johnvwan/p/15672342.html
 
 
 
