@@ -77,10 +77,10 @@ node {
 
 在声明式流水线中有效的基本语句和表达式遵循与 Groovy 的语法同样的规则，但有以下例
 外：
-➢ 流水线顶层必须是一个 block，即 pipeline{}；
-➢ 分隔符可以不需要分号， 但是每条语句都必须在自己的行上；
-➢ 块只能由 Sections、 Directives、 Steps 或 assignment statements 组成；
-➢ 属性引用语句被当做是无参数的方法调用，比如 input 会被当做 input()。  
+- 流水线顶层必须是一个 block，即 pipeline{}；
+- 分隔符可以不需要分号， 但是每条语句都必须在自己的行上；
+- 块只能由 Sections、 Directives、 Steps 或 assignment statements 组成；
+- 属性引用语句被当做是无参数的方法调用，比如 input 会被当做 input()。  
 
 ### 流水线中的sections
 
@@ -427,20 +427,20 @@ Agent 表示整个流水线或特定阶段中的步骤和命令执行的位置�
 
   Jenkins 流水线支持很多内置指令，比如 retry 可以对失败的步骤进行重复执行 n 次，可以根
   据不同的指令实现不同的效果。 比较常用的指令如下：
-  ➢ buildDiscarder ： 保 留 多 少 个 流 水 线 的 构 建 记 录 。 比 如 ： options{ buildDiscarder(logRotator(numToKeepStr: '1')) }；
-  ➢ disableConcurrentBuilds：禁止流水线并行执行，防止并行流水线同时访问共享资源导
+  - buildDiscarder ： 保 留 多 少 个 流 水 线 的 构 建 记 录 。 比 如 ： options{ buildDiscarder(logRotator(numToKeepStr: '1')) }；
+  - disableConcurrentBuilds：禁止流水线并行执行，防止并行流水线同时访问共享资源导
   致流水线失败。 比如： options { disableConcurrentBuilds() }；
-  ➢ disableResume ： 如 果 控 制 器 重 启 ， 禁 止 流 水 线 自 动 恢 复 。 比 如 ： options
+  - disableResume ： 如 果 控 制 器 重 启 ， 禁 止 流 水 线 自 动 恢 复 。 比 如 ： options
   { disableResume() }；
-  ➢ newContainerPerStage： agent 为 docker 或 dockerfile 时，每个阶段将在同一个节点的
+  - newContainerPerStage： agent 为 docker 或 dockerfile 时，每个阶段将在同一个节点的
   新 容 器 中 运 行 ， 而 不 是 所 有 的 阶 段 都 在 同 一 个 容 器 中 运 行 。 比 如 ： options
   { newContainerPerStage () }；
-  ➢ quietPeriod：流水线静默期，也就是触发流水线后等待一会在执行。比如： options
+  - quietPeriod：流水线静默期，也就是触发流水线后等待一会在执行。比如： options
   { quietPeriod(30) }；
-  ➢ retry：流水线失败后重试次数。比如： options { retry(3) }；
-  ➢ timeout：设置流水线的超时时间，超过流水线时间， job 会自动终止。比如： options
+  - retry：流水线失败后重试次数。比如： options { retry(3) }；
+  - timeout：设置流水线的超时时间，超过流水线时间， job 会自动终止。比如： options
   { timeout(time: 1, unit: 'HOURS') }；
-  ➢ timestamps：为控制台输出时间戳。比如： options { timestamps() }。
+  - timestamps：为控制台输出时间戳。比如： options { timestamps() }。
   配置示例如下，只需要添加 options 字段即可  
 
   ```
@@ -484,11 +484,11 @@ Agent 表示整个流水线或特定阶段中的步骤和命令执行的位置�
 
   提供了一个用户在触发流水线时应该提供的参数列表，这些用户指定参数的值可以通过 params 对象提供给流水线的 step（步骤）。
   目前支持的参数类型如下：
-  ➢ string：字符串类型的参数，例如： parameters { string(name: 'DEPLOY_ENV', defaultValue:'staging', description: '') }，表示定义一个名为 DEPLOY_ENV 的字符型变量，默认值为staging；
-  ➢ text：文本型参数，一般用于定义多行文本内容的变量。例如 parameters { text(name:'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '') }，表示定义一个名  为 DEPLOY_TEXT 的变量，默认值 是'One\nTwo\nThree\n'；
-  ➢ booleanParam：布尔型参数，例如: parameters { booleanParam(name: 'DEBUG_BUILD',defaultValue: true, description: '') }；
-  ➢ choice：选择型参数，一般用于给定几个可选的值，然后选择其中一个进行赋值，例如：parameters { choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '') }，表示定义一个名为 CHOICES 的变量，可选的值为 one、 two、 three；
-  ➢ password：密码型变量，一般用于定义敏感型变量，在 Jenkins 控制台会输出为*。例如： parameters { password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password') }，表示定义一个名为 PASSWORD 的变量，其默认值为 SECRET。  
+  - string：字符串类型的参数，例如： parameters { string(name: 'DEPLOY_ENV', defaultValue:'staging', description: '') }，表示定义一个名为 DEPLOY_ENV 的字符型变量，默认值为staging；
+  - text：文本型参数，一般用于定义多行文本内容的变量。例如 parameters { text(name:'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '') }，表示定义一个名  为 DEPLOY_TEXT 的变量，默认值 是'One\nTwo\nThree\n'；
+  - booleanParam：布尔型参数，例如: parameters { booleanParam(name: 'DEBUG_BUILD',defaultValue: true, description: '') }；
+  - choice：选择型参数，一般用于给定几个可选的值，然后选择其中一个进行赋值，例如：parameters { choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '') }，表示定义一个名为 CHOICES 的变量，可选的值为 one、 two、 three；
+  - password：密码型变量，一般用于定义敏感型变量，在 Jenkins 控制台会输出为*。例如： parameters { password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password') }，表示定义一个名为 PASSWORD 的变量，其默认值为 SECRET。  
 
   ```
   pipeline {
@@ -584,11 +584,11 @@ pipeline {
 
 字段可以实现在流水线中进行交互式操作，比如选择要部署的环境、是否继续执行某个阶段等。
 配置 Input 支持以下选项：
-➢ message： 必选，需要用户进行 input 的提示信息，比如：“是否发布到生产环境？”；
-➢ id：可选， input 的标识符，默认为 stage 的名称；
-➢ ok： 可选，确认按钮的显示信息，比如：“确定”、“允许”；
-➢ submitter： 可选，允许提交 input 操作的用户或组的名称，如果为空，任何登录用户均  可提交 input；
-➢ parameters：提供一个参数列表供 input使用
+- message： 必选，需要用户进行 input 的提示信息，比如：“是否发布到生产环境？”；
+- id：可选， input 的标识符，默认为 stage 的名称；
+- ok： 可选，确认按钮的显示信息，比如：“确定”、“允许”；
+- submitter： 可选，允许提交 input 操作的用户或组的名称，如果为空，任何登录用户均  可提交 input；
+- parameters：提供一个参数列表供 input使用
 
 - 假如需要配置一个提示消息为“还继续么”、确认按钮为“继续”、提供一个 PERSON 的变量的参数，并且只能由登录用户为 alice 和 bob 提交的 input 流水线:
 
@@ -618,18 +618,18 @@ pipeline {
 When 指令允许流水线根据给定的条件决定是否应该执行该 stage， when 指令必须包含至少一个条件。如果 when 包含多个条件，所有的子条件必须都返回 True， stage 才能执行。
 When 也可以结合 not、 allOf、 anyOf 语法达到更灵活的条件匹配。
 目前比较常用的内置条件如下：
-➢ branch：当正在构建的分支与给定的分支匹配时，执行这个 stage，例如： when { branch 'master' }。注意， branch 只适用于多分支流水线；
-➢ changelog：匹配提交的 changeLog 决定是否构建，例如： when { changelog '.*^\\[DEPENDENCY\\] .+$' }；
-➢ environment：当指定的环境变量和给定的变量匹配时，执行这个 stage，例如： when
+- branch：当正在构建的分支与给定的分支匹配时，执行这个 stage，例如： when { branch 'master' }。注意， branch 只适用于多分支流水线；
+- changelog：匹配提交的 changeLog 决定是否构建，例如： when { changelog '.*^\\[DEPENDENCY\\] .+$' }；
+- environment：当指定的环境变量和给定的变量匹配时，执行这个 stage，例如： when
 { environment name: 'DEPLOY_TO', value: 'production' }；
-➢ equals：当期望值和实际值相同时，执行这个 stage，例如： when { equals expected: 2,actual: currentBuild.number }；
-➢ expression：当指定的 Groovy 表达式评估为 True，执行这个 stage，例如： when
+- equals：当期望值和实际值相同时，执行这个 stage，例如： when { equals expected: 2,actual: currentBuild.number }；
+- expression：当指定的 Groovy 表达式评估为 True，执行这个 stage，例如： when
 { expression { return params.DEBUG_BUILD } }；
-➢ tag：如果 TAG_NAME 的值和给定的条件匹配，执行这个 stage，例如： when { tag  "release-*" }；
-➢ not：当嵌套条件出现错误时，执行这个 stage，必须包含一个条件，例如： when { not { branch 'master' } }；
-➢ allOf：当所有的嵌套条件都正确时， 执行这个 stage，必须包含至少一个条件，例如：
+- tag：如果 TAG_NAME 的值和给定的条件匹配，执行这个 stage，例如： when { tag  "release-*" }；
+- not：当嵌套条件出现错误时，执行这个 stage，必须包含一个条件，例如： when { not { branch 'master' } }；
+- allOf：当所有的嵌套条件都正确时， 执行这个 stage，必须包含至少一个条件，例如：
 when { allOf { branch 'master'; environment name: 'DEPLOY_TO', value: 'production' } }；
-➢ anyOf：当至少有一个嵌套条件为 True 时， 执行这个 stage，例如： when { anyOf { branch  'master'; branch 'staging' } }  
+- anyOf：当至少有一个嵌套条件为 True 时， 执行这个 stage，例如： when { anyOf { branch  'master'; branch 'staging' } }  
 
 - 当分支为 production 时，执行 Example Deploy 步骤：  
 
@@ -737,11 +737,11 @@ when { allOf { branch 'master'; environment name: 'DEPLOY_TO', value: 'productio
   条件才会被评估，但是可以通过一些选项更改此选项。比如在进入 stage 的 agent 前评估 when，
   可以使用 beforeAgent，当 when 为 true 时才进行该 stage。
   目前支持的前置条件如下：
-  ➢ beforeAgent： 如果 beforeAgent 为 true，则会先评估 when 条件。在 when 条件为 true
+  - beforeAgent： 如果 beforeAgent 为 true，则会先评估 when 条件。在 when 条件为 true
   时，才会进入该 stage；
-  ➢ beforeInput： 如果 beforeInput 为 true，则会先评估 when 条件。在 when 条件为 true
+  - beforeInput： 如果 beforeInput 为 true，则会先评估 when 条件。在 when 条件为 true
   时，才会进入到 input 阶段；
-  ➢ beforeOptions： 如果 beforeInput 为 true，则会先评估 when 条件。在 when 条件为 true
+  - beforeOptions： 如果 beforeInput 为 true，则会先评估 when 条件。在 when 条件为 true
   时，才会进入到 options 阶段；  
 
   **ACTION**
@@ -956,24 +956,24 @@ pipeline {
 ### Jenkinfile
 
 创建一个 Jenkinsfile 并将其放置于代码仓库中，有以下好处：
-➢ 方便对流水线上的代码进行复查/迭代；
-➢ 对管道进行审计跟踪；
-➢ 流水线真正的源代码能够被项目的多个成员查看和编辑。  
+- 方便对流水线上的代码进行复查/迭代；
+- 对管道进行审计跟踪；
+- 流水线真正的源代码能够被项目的多个成员查看和编辑。  
 
 #### 环境变量
 
 ```
 1. 静态变量
 Jenkins 有许多内置变量可以直接在 Jenkinsfile 中使用， 可以通过 JENKINS_URL/pipelinesyntax/globals#env 获取完整列表。目前比较常用的环境变量如下：
-➢ BUILD_ID：当前构建的 ID，与 Jenkins 版本 1.597+中的 BUILD_NUMBER 完全相同；
-➢ BUILD_NUMBER：当前构建的 ID，和 BUILD_ID 一致；
-➢ BUILD_TAG：用来标识构建的版本号，格式为：jenkins-${JOB_NAME}-${BUILD_NUMBER}，
+- BUILD_ID：当前构建的 ID，与 Jenkins 版本 1.597+中的 BUILD_NUMBER 完全相同；
+- BUILD_NUMBER：当前构建的 ID，和 BUILD_ID 一致；
+- BUILD_TAG：用来标识构建的版本号，格式为：jenkins-${JOB_NAME}-${BUILD_NUMBER}，
 可以对产物进行命名，比如生产的 jar 包名字、镜像的 TAG 等；
-➢ BUILD_URL：本次构建的完整 URL，比如：http://buildserver/jenkins/job/MyJobName/17/；
-➢ JOB_NAME：本次构建的项目名称；
-➢ NODE_NAME：当前构建节点的名称；
-➢ JENKINS_URL： Jenkins 完整的 URL，需要在 System Configuration 设置；
-➢ WORKSPACE：执行构建的工作目录。
+- BUILD_URL：本次构建的完整 URL，比如：http://buildserver/jenkins/job/MyJobName/17/；
+- JOB_NAME：本次构建的项目名称；
+- NODE_NAME：当前构建节点的名称；
+- JENKINS_URL： Jenkins 完整的 URL，需要在 System Configuration 设置；
+- WORKSPACE：执行构建的工作目录。
 可以使用 env.BUILD_ID 或 env.JENKINS_URL 引用某个内置变量：
 打印输出环境变量 sh "printenv"
 ```
@@ -1076,10 +1076,10 @@ BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-commoncreds')
 ```
 
 上述的配置会自动生成 3 个环境变量：
-➢ BITBUCKET_COMMON_CREDS： 包含一个以冒号分隔的用户名和密码，格式为
+- BITBUCKET_COMMON_CREDS： 包含一个以冒号分隔的用户名和密码，格式为
 username:password；
-➢ BITBUCKET_COMMON_CREDS_USR： 仅包含用户名的附加变量；
-➢ BITBUCKET_COMMON_CREDS_PSW： 仅包含密码的附加变量。  
+- BITBUCKET_COMMON_CREDS_USR： 仅包含用户名的附加变量；
+- BITBUCKET_COMMON_CREDS_PSW： 仅包含密码的附加变量。  
 
 ```
 pipeline {
