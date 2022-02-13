@@ -836,7 +836,8 @@ pipeline {
 
 执行过程如下
 
-![image-20220213175344438](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220213175344438.png)
+![image-20220213175344438](https://user-images.githubusercontent.com/12670758/153755931-4207fb92-3d01-4d24-9a62-0161a0cc06fb.png)
+
 
 也可以通过 options 配置在全局：  
 
