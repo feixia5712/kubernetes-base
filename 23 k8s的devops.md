@@ -292,23 +292,23 @@ Agent 表示整个流水线或特定阶段中的步骤和命令执行的位置�
   #### POST
 
   一般用于流水线结束后的进一步处理，比如错误通知等。 Post 可以针对流水线不同的结果做出不同的处理，就像开发程序的错误处理，比如 Python 语言的 try catch。 Post 可以定义在Pipeline 或 stage 中，目前支持以下条件：
-  ➢ always：无论 Pipeline 或 stage 的完成状态如何，都允许运行该 post 中定义的指令；
-  ➢ changed：只有当前 Pipeline 或 stage 的完成状态与它之前的运行不同时，才允许在该
+  - always：无论 Pipeline 或 stage 的完成状态如何，都允许运行该 post 中定义的指令；
+  - changed：只有当前 Pipeline 或 stage 的完成状态与它之前的运行不同时，才允许在该
   post 部分运行该步骤；
-  ➢ fixed：当本次 Pipeline 或 stage 成功，且上一次构建是失败或不稳定时，允许运行该
+  - fixed：当本次 Pipeline 或 stage 成功，且上一次构建是失败或不稳定时，允许运行该
   post 中定义的指令；
-  ➢ regression： 当本次 Pipeline 或 stage 的状态为失败、不稳定或终止，且上一次构建的
+  - regression： 当本次 Pipeline 或 stage 的状态为失败、不稳定或终止，且上一次构建的
   状态为成功时，允许运行该 post 中定义的指令；
-  ➢ failure：只有当前 Pipeline 或 stage 的完成状态为失败（failure），才允许在 post 部分运
+  - failure：只有当前 Pipeline 或 stage 的完成状态为失败（failure），才允许在 post 部分运
   行该步骤，通常这时在 Web 界面中显示为红色；
-  ➢ success：当前状态为成功（success），执行 post 步骤，通常在 Web 界面中显示为蓝色
+  - success：当前状态为成功（success），执行 post 步骤，通常在 Web 界面中显示为蓝色
   或绿色；
-  ➢ unstable：当前状态为不稳定（unstable），执行 post 步骤，通常由于测试失败或代码
+  - unstable：当前状态为不稳定（unstable），执行 post 步骤，通常由于测试失败或代码
   违规等造成，在 Web 界面中显示为黄色；
-  ➢ aborted：当前状态为终止（aborted），执行该 post 步骤，通常由于流水线被手动终止
+  - aborted：当前状态为终止（aborted），执行该 post 步骤，通常由于流水线被手动终止
   触发，这时在 Web 界面中显示为灰色；
-  ➢ unsuccessful：当前状态不是 success 时，执行该 post 步骤；
-  ➢ cleanup：无论 pipeline 或 stage 的完成状态如何，都允许运行该 post 中定义的指令。
+  - unsuccessful：当前状态不是 success 时，执行该 post 步骤；
+  - cleanup：无论 pipeline 或 stage 的完成状态如何，都允许运行该 post 中定义的指令。
   和 always 的区别在于， cleanup 会在其它执行之后执行  
 
   ##### example01
