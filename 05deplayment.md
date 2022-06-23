@@ -353,7 +353,8 @@ spec:
 .spec.revisionHistoryLimit：设置保留RS旧的revision的个数，设置为0的话，不保留历史数据
 .spec.minReadySeconds：可选参数，指定新创建的Pod在没有任何容器崩溃的情况下视为Ready最小的秒数，默认为0，即一旦被创建就视为可用。
 滚动更新的策略：
-	.spec.strategy.type：更新deployment的方式，默认是RollingUpdate
+	.spec.strategy.type：更新deployment的方式，默认是RollingUpdate另外一种是Recreate
+Recreate：设置spec.strategy.type=Recreate，表示Deployment在更新Pod时，会先杀掉所有正在运行的Pod，然后创建新的Pod。
 RollingUpdate：滚动更新，可以指定maxSurge和maxUnavailable
      maxUnavailable：指定在回滚或更新时最大不可用的Pod的数量，可选字段，默认25%，可以设置成数字或百分比，如果该值为0，那么maxSurge就不能0
      maxSurge：可以超过期望值的最大Pod数，可选字段，默认为25%，可以设置成数字或百分比，如果该值为0，那么maxUnavailable不能为0
