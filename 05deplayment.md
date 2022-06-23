@@ -372,3 +372,4 @@ Recreate：重建，先删除旧的Pod，在创建新的Pod
 
 ```
 
+参考有状态与无状态的区别:https://blog.csdn.net/qq_50119948/article/details/121609072
