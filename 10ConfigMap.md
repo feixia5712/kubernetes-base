@@ -414,4 +414,7 @@ spec:
 ```
 上面的例子定义了一个卷并将它作为 /config 文件夹挂载到 demo 容器内， 创建两个文件，/config/game.properties 和 /config/user-interface.properties， 尽管 ConfigMap 中包含了四个键。 这是因为 Pod 定义中在 volumes 节指定了一个 items 数组。 如果你完全忽略 items 数组，则 ConfigMap 中的每个键都会变成一个与该键同名的文件， 因此你会得到四个文件。
 
+*注意几点*
+以环境变量方式使用的 ConfigMap 数据不会被自动更新。 更新这些数据需要重新启动 Pod
+被挂载的 ConfigMap 内容会被自动更新
 
