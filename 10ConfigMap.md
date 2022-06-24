@@ -352,3 +352,66 @@ total 8
 root@dp-cm-78756b96c9-zpgrh:/etc/config2/..data# 
 ```
 
+类文件的使用
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-demo
+data:
+  # 类属性键；每一个键都映射到一个简单的值
+  player_initial_lives: "3"
+  ui_properties_file_name: "user-interface.properties"
+
+  # 类文件键
+  game.properties: |
+    enemy.types=aliens,monsters
+    player.maximum-lives=5    
+  user-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true  
+```
+调用
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-demo-pod
+spec:
+  containers:
+    - name: demo
+      image: alpine
+      command: ["sleep", "3600"]
+      env:
+        # 定义环境变量
+        - name: PLAYER_INITIAL_LIVES # 请注意这里和 ConfigMap 中的键名是不一样的
+          valueFrom:
+            configMapKeyRef:
+              name: game-demo           # 这个值来自 ConfigMap
+              key: player_initial_lives # 需要取值的键
+        - name: UI_PROPERTIES_FILE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: game-demo
+              key: ui_properties_file_name
+      volumeMounts:
+      - name: config
+        mountPath: "/config"
+        readOnly: true
+  volumes:
+    # 你可以在 Pod 级别设置卷，然后将其挂载到 Pod 内的容器中
+    - name: config
+      configMap:
+        # 提供你想要挂载的 ConfigMap 的名字
+        name: game-demo
+        # 来自 ConfigMap 的一组键，将被创建为文件
+        items:
+        - key: "game.properties"
+          path: "game.properties"
+        - key: "user-interface.properties"
+          path: "user-interface.properties"
+```
+上面的例子定义了一个卷并将它作为 /config 文件夹挂载到 demo 容器内， 创建两个文件，/config/game.properties 和 /config/user-interface.properties， 尽管 ConfigMap 中包含了四个键。 这是因为 Pod 定义中在 volumes 节指定了一个 items 数组。 如果你完全忽略 items 数组，则 ConfigMap 中的每个键都会变成一个与该键同名的文件， 因此你会得到四个文件。
+
+
