@@ -160,6 +160,7 @@ successThreshold: 1 # 检查成功为1次表示就绪
 failureThreshold: 2 # 检测失败2次表示未就绪
 ```
 具体使用案例参考;https://www.cnblogs.com/johnvwan/p/15672342.html
-
+相关知识:dnsPolicy解释
+http://www.ichenfu.com/2018/12/20/k8s-pod-dns-policy/
 
 
